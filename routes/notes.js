@@ -12,21 +12,6 @@ notes.get('/', (req, res) => {
     res.json(JSON.parse(data)));
   });
 
-// notes.get('/:note_id', (req, res) => {
-//     console.info(`${req.method} request received to get a specific note`);
-//     console.log(req.params);
-//     const noteId = req.params.note_id;
-
-//     readFromFile('./db/db.json')
-//     .then((data) => res.json(JSON.parse(data)))
-//     .then((json) => {
-//         const result = json.filter((note) => note.note_id === noteId);
-//         return result.length > 0
-//             ? res.json(result)
-//             : res.json('No note with that ID');
-//     });
-//   });
-
 
 // POST request to add notes
 notes.post('/',(req,res) => {
