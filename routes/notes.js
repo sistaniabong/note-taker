@@ -12,6 +12,21 @@ notes.get('/', (req, res) => {
     res.json(JSON.parse(data)));
   });
 
+// notes.get('/:note_id', (req, res) => {
+//     console.info(`${req.method} request received to get a specific note`);
+//     console.log(req.params);
+//     const noteId = req.params.note_id;
+
+//     readFromFile('./db/db.json')
+//     .then((data) => res.json(JSON.parse(data)))
+//     .then((json) => {
+//         const result = json.filter((note) => note.note_id === noteId);
+//         return result.length > 0
+//             ? res.json(result)
+//             : res.json('No note with that ID');
+//     });
+//   });
+
 
 // POST request to add notes
 notes.post('/',(req,res) => {
@@ -24,7 +39,7 @@ notes.post('/',(req,res) => {
         const newNotes = {
           title,
           text,
-          note_id: uuidv4(),
+          id: uuidv4(),
         };
 
         // adding the note to db.json
@@ -40,5 +55,21 @@ notes.post('/',(req,res) => {
         res.json('Error in saving notes');
     }
 });
+
+notes.delete('/:note_id', (req,res) => {
+    console.info(`${req.method} request received to delete ${req.params.note_id} all notes`);
+    console.log(req.params.note_id)
+    const noteId = req.params.note_id
+    readFromFile('./db/db.json')
+        .then((data) => JSON.parse(data))
+        .then((json) => { 
+            // Filter out the deleted note_id and return a new array of notes
+            const result = json.filter((note) => note.id !== noteId);
+
+            writeToFile('./db/db.json', result);
+            res.json(`Note ${noteId} has been deleted 🗑️`);
+        });
+})
+
 
 module.exports = notes;
