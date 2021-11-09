@@ -6,7 +6,7 @@ Note Taker is a web application application that enables a user to add, save and
 
 The following GIF displays the app's functionality:
 
-![note-taker-demo](./images/)
+![note-taker-demo](./images/note-taker.gif)
 
 ## Table of Contents
 
@@ -79,7 +79,7 @@ Please make sure to update tests as appropriate.
 ---
 To review the refactored code, please go to the [repository](https://github.com/sistaniabong/note-taker)
 
-To deploy this web application, please click on this [link](https://sheltered-river-05532.herokuapp.com/notes)
+To deploy this web application, please click on this [link](https://sheltered-river-05532.herokuapp.com/)
 
 
 ## Questions
